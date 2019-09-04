@@ -1,22 +1,5 @@
-import Router from "next/router";
 import fetch from "isomorphic-unfetch";
 
-const alterTheme = that => {
-  that.setState(prevState => ({
-    textColor: prevState.textColor === "black" ? "blue" : "white",
-    backgroundColor: prevState.backgroundColor === "white" ? "yellow" : "blue"
-  }));
-};
-const increaseFontSize = that => {
-  that.setState(prevState => ({
-    fontSize: prevState.fontSize + 1
-  }));
-};
-const decreaseFontSize = that => {
-  that.setState(prevState => ({
-    fontSize: prevState.fontSize - 1
-  }));
-};
 const doLogin = async ({ email, password }) => {
   try {
     const raw = await fetch("https://reqres.in/api/login", {
@@ -43,12 +26,6 @@ const fetchListings = async () => {
 };
 
 export default {
-  navigate: path => () => {
-    Router.push(path);
-  },
-  increaseFontSize,
-  decreaseFontSize,
-  alterTheme,
   doLogin,
   fetchListings
 };
